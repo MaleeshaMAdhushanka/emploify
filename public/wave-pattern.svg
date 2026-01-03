@@ -1,0 +1,10 @@
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="wave" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M0 50 Q25 30, 50 50 T100 50" fill="none" stroke="#0D948815" stroke-width="1"/>
+      <path d="M0 60 Q25 40, 50 60 T100 60" fill="none" stroke="#0D948810" stroke-width="1"/>
+      <path d="M0 70 Q25 50, 50 70 T100 70" fill="none" stroke="#0D948808" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#wave)"/>
+</svg>
