@@ -13,12 +13,12 @@ interface User {
 
 interface AuthState {
     //State
-    user: User | null;
-    isAuthenticated: boolean;
-    isLoading: boolean;
-    error: string | null;
+    user: User | null; //Current Logged-in User (or null)
+    isAuthenticated: boolean; //Is user logged in?
+    isLoading: boolean; //Is  Auth check  in progress?
+    error: string | null; //Any error message
 
-    //Actions
+    //Actions(Functions to change state)
     setUser: (user: User | null) => void;
     setLoading: (isLoading: boolean) => void;
     setError: (error: string | null) => void;
@@ -39,9 +39,9 @@ export const useAuthStore = create<AuthState>()(
       // Actions
       setUser: (user) =>
         set({
-          user,
-          isAuthenticated: !!user,
-          isLoading: false,
+          user, //Set the user
+          isAuthenticated: !!user, //true if user exists, false is null
+          isLoading: false, //Done loading
         }),
 
       setLoading: (isLoading) => set({ isLoading }),
@@ -50,17 +50,19 @@ export const useAuthStore = create<AuthState>()(
 
       logout: () =>
         set({
-          user: null,
-          isAuthenticated: false,
-          isLoading: false,
-          error: null,
+          user: null, //Clear user
+          isAuthenticated: false, //Not authenticated
+          isLoading: false, //Not loading
+          error: null, //Clear error
         }),
 
       clearError: () => set({ error: null }),
     }),
     {
       name: "auth-storage", // localStorage key
-      partialize: (state) => ({ user: state.user }), // Only persist user
+      partialize: (state) => ({ 
+        user: state.user 
+     }), // Only persist user
     }
   )
 );
